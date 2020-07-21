@@ -89,7 +89,7 @@ def onezero():
             'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36')
 
         # 크롬드라이버(chromedriver.exe)가 위치한 경로 구하기
-        driverPath = '{}\crawling\chromedriver.exe'.format(os.path.dirname(os.path.realpath(__file__)))
+        driverPath = '{}\crawling\chromedriver'.format(os.path.dirname(os.path.realpath(__file__)))
 
         # 1.WebDriver객체 얻기
         # 드라이버 생성시 두번 째 인자로 위에서 설정한 Headless브라우저로 띄우기 위한 옵션 전달
@@ -155,6 +155,73 @@ def onezero():
             title.append(blogTitles[index].get('title'))
             content.append(blogContents[index].text)
 
+        # 3페이지버튼 찾고 클릭처리하기
+        twoPage_button = WebDriverWait(driver, 3).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, '#main_pack > div.paging > a:nth-child(4)')))
+        twoPage_button.click()
+
+        # 검색(3페이지)
+        res = requests.get(
+            "https://search.naver.com/search.naver?date_from=&date_option=0&date_to=&dup_remove=1&nso=&post_blogurl=&post_blogurl_without=&query=%EC%95%A0%EA%B2%AC%20%EB%8F%99%EB%B0%98%20%EC%B9%B4%ED%8E%98&sm=tab_pge&srchby=all&st=sim&where=post&start=21",
+            headers=headers)
+        soup = BeautifulSoup(res.text, 'html.parser')
+
+        blogImgs = soup.select('.sh_blog_thumbnail')
+        blogHrefs = soup.select('.sh_blog_title')
+        blogTitles = soup.select('.sh_blog_title')
+        blogContents = soup.select('.sh_blog_passage')
+
+        for index in range(len(blogImgs)):
+            img.append(blogImgs[index].get('src'))
+            href.append(blogHrefs[index].get('href'))
+            title.append(blogTitles[index].get('title'))
+            content.append(blogContents[index].text)
+
+
+        # 4페이지버튼 찾고 클릭처리하기
+        twoPage_button = WebDriverWait(driver, 3).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, '#main_pack > div.paging > a:nth-child(5)')))
+        twoPage_button.click()
+
+        # 검색(4페이지)
+        res = requests.get(
+            "https://search.naver.com/search.naver?date_from=&date_option=0&date_to=&dup_remove=1&nso=&post_blogurl=&post_blogurl_without=&query=%EC%95%A0%EA%B2%AC%20%EB%8F%99%EB%B0%98%20%EC%B9%B4%ED%8E%98&sm=tab_pge&srchby=all&st=sim&where=post&start=31",
+            headers=headers)
+        soup = BeautifulSoup(res.text, 'html.parser')
+
+        blogImgs = soup.select('.sh_blog_thumbnail')
+        blogHrefs = soup.select('.sh_blog_title')
+        blogTitles = soup.select('.sh_blog_title')
+        blogContents = soup.select('.sh_blog_passage')
+
+        for index in range(len(blogImgs)):
+            img.append(blogImgs[index].get('src'))
+            href.append(blogHrefs[index].get('href'))
+            title.append(blogTitles[index].get('title'))
+            content.append(blogContents[index].text)
+
+        # 5페이지버튼 찾고 클릭처리하기
+        twoPage_button = WebDriverWait(driver, 3).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, '#main_pack > div.paging > a:nth-child(5)')))
+        twoPage_button.click()
+
+        # 검색(5페이지)
+        res = requests.get(
+            "https://search.naver.com/search.naver?date_from=&date_option=0&date_to=&dup_remove=1&nso=&post_blogurl=&post_blogurl_without=&query=%EC%95%A0%EA%B2%AC%20%EB%8F%99%EB%B0%98%20%EC%B9%B4%ED%8E%98&sm=tab_pge&srchby=all&st=sim&where=post&start=41",
+            headers=headers)
+        soup = BeautifulSoup(res.text, 'html.parser')
+
+        blogImgs = soup.select('.sh_blog_thumbnail')
+        blogHrefs = soup.select('.sh_blog_title')
+        blogTitles = soup.select('.sh_blog_title')
+        blogContents = soup.select('.sh_blog_passage')
+
+        for index in range(len(blogImgs)):
+            img.append(blogImgs[index].get('src'))
+            href.append(blogHrefs[index].get('href'))
+            title.append(blogTitles[index].get('title'))
+            content.append(blogContents[index].text)
+
 
     except TimeoutException as e:
         print('해당 페이지에 태그 요소가 존재하지 않거나, 해당 페이지가 3초동안 열리지 않았어요:', e)
@@ -163,7 +230,6 @@ def onezero():
     print(dicResult);
     driver.close()
     return jsonify(dicResult)
-
 
 #chatbot
 

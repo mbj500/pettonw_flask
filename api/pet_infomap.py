@@ -27,7 +27,7 @@ class PetInfomap(Resource):
                 testUrl = "http://localdata.kr/datafile/each/02_03_01_P.xlsx"
             else:
                 testUrl = "http://www.localdata.kr/datafile/each/02_03_06_P.xlsx"
-            driverPath = '{}\chromedriver.exe'.format(os.path.dirname(os.path.realpath(__file__)))
+            driverPath = '{}\chromedriver'.format(os.path.dirname(os.path.realpath(__file__)))
             savePath = "C:\Document"
             newFilePath = './api/data/pet_'+filename+'.xlsx'
 
