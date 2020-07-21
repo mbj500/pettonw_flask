@@ -93,7 +93,7 @@ def onezero():
 
         # 1.WebDriver객체 얻기
         # 드라이버 생성시 두번 째 인자로 위에서 설정한 Headless브라우저로 띄우기 위한 옵션 전달
-        driver = webdriver.Chrome(driverPath)
+        driver = webdriver.Chrome(executable_path=driverPath)
         #driver = webdriver.Chrome(driverPath,options=options)
         loot="https://search.naver.com/search.naver?where=post&sm=tab_jum&query="
         driver.get(loot)

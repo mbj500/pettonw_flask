@@ -46,7 +46,7 @@ class PetInfomap(Resource):
             #options.add_argument('--headless')
             options.add_argument('--no-sandbox')
             options.add_argument('--disable-dev-shm-usage')
-            driver = webdriver.Chrome(driverPath, options=options)
+            driver = webdriver.Chrome(executable_path=driverPath, options=options)
             driver.set_window_size(1920, 1080)
             driver.get(testUrl)
             self.download_wait(savePath,driver)
