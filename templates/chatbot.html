@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='theme.css') }}">
+    <title>우댕냥 챗봇</title>
+</head>
+<!-- Main CSS-->
+
+<body>
+	<div class="au-chat__content au-chat__content2 js-scrollbar5">
+        <div class="recei-mess-wrap">
+            <span class="mess-time">1 Min ago</span>
+            <div class="recei-mess__inner">
+                <div class="avatar avatar--tiny">
+                    <img src="{{ url_for('static', filename='logo.png') }}">
+                </div>
+                <div class="recei-mess-list">
+                    <div class="recei-mess">안녕하세요 우댕냥 입니다.</div>
+                    <div class="recei-mess">반려동물에 관련한 궁금하신점이 있으면 물어보세요!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="au-chat-textfield">
+        <input class="au-input au-input--full au-input--h65"  id="query" type="text" placeholder="질문을 입력하세요">
+        <button class="au-input-icon">
+            <i class="far fa-paper-plane"></i>
+        </button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='test.js')}}"></script>
+</body>
+</html>
+
