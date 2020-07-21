@@ -46,7 +46,10 @@ class PetInfomap(Resource):
             #options.add_argument('--headless')
             options.add_argument('--no-sandbox')
             options.add_argument('--disable-dev-shm-usage')
-            driver = webdriver.Chrome(executable_path=driverPath, options=options)
+            #/home/ubuntu/pettonw_flask/
+            #driver = webdriver.Chrome(executable_path=driverPath, options=options)
+            executable_path = "/home/ubuntu/pettonw_flask/api/chromedriver"
+            driver = webdriver.Chrome(executable_path=executable_path, options=options)
             driver.set_window_size(1920, 1080)
             driver.get(testUrl)
             self.download_wait(savePath,driver)
