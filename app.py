@@ -176,7 +176,7 @@ def index():
 @app.route('/webhook', methods=['POST'])
 def webhook():
     responseData = request.get_json(force=True)
-    ngrok = 'https://localhost:8080'
+    ngrok = 'http://localhost:8080'
 
     yes_intent = ['응', '보여줘', '네', '알려줘', '알려주세요', '웅']
     no_intent = ['괜찮아', '아니']
