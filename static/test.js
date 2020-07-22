@@ -59,7 +59,7 @@ function sendMessage(message) {
           if(data_message.length>1){
               setTimeout(function() {
                   window.parent.postMessage({ childData : data_message[1] }, '*');
-              }, 500);
+              }, 300);
           }
 
         }

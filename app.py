@@ -28,7 +28,7 @@ pip install requests
 pip install cx_Oracle
 pip install dialogflow
 conda install selenium 
-pip install pandas   
+
 pip install xlrd
 pip install openpyxl
 //
@@ -89,13 +89,11 @@ def onezero():
             'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36')
 
         # 크롬드라이버(chromedriver.exe)가 위치한 경로 구하기
-        driverPath = '{}\crawling\chromedriver'.format(os.path.dirname(os.path.realpath(__file__)))
+        driverPath = '{}\crawling\chromedriver.exe'.format(os.path.dirname(os.path.realpath(__file__)))
 
         # 1.WebDriver객체 얻기
         # 드라이버 생성시 두번 째 인자로 위에서 설정한 Headless브라우저로 띄우기 위한 옵션 전달
-        executable_path = "/home/ubuntu/pettonw_flask/api/chromedriver"
-        driver = webdriver.Chrome(executable_path=executable_path)
-        #driver = webdriver.Chrome(executable_path=driverPath)
+        driver = webdriver.Chrome(driverPath)
         #driver = webdriver.Chrome(driverPath,options=options)
         loot="https://search.naver.com/search.naver?where=post&sm=tab_jum&query="
         driver.get(loot)
@@ -233,6 +231,7 @@ def onezero():
     driver.close()
     return jsonify(dicResult)
 
+
 #chatbot
 
 @app.route('/')
@@ -300,7 +299,6 @@ def webhook():
     else:
         map = responseData['queryResult']['parameters']['map']
         area = responseData['queryResult']['parameters']['area']
-        print(map)
         if map == '병원':
             if area == '금천구':
                 #webbrowser.open_new("http://localhost:8080/pettown/InfoMap/InfoMap.hos?phaddress=%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EA%B8%88%EC%B2%9C%EA%B5%AC")

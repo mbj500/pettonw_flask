@@ -27,7 +27,7 @@ class PetInfomap(Resource):
                 testUrl = "http://localdata.kr/datafile/each/02_03_01_P.xlsx"
             else:
                 testUrl = "http://www.localdata.kr/datafile/each/02_03_06_P.xlsx"
-            driverPath = '{}\chromedriver'.format(os.path.dirname(os.path.realpath(__file__)))
+            driverPath = '{}\chromedriver.exe'.format(os.path.dirname(os.path.realpath(__file__)))
             savePath = "C:\Document"
             newFilePath = './api/data/pet_'+filename+'.xlsx'
 
@@ -46,10 +46,7 @@ class PetInfomap(Resource):
             #options.add_argument('--headless')
             options.add_argument('--no-sandbox')
             options.add_argument('--disable-dev-shm-usage')
-            #/home/ubuntu/pettonw_flask/
-            #driver = webdriver.Chrome(executable_path=driverPath, options=options)
-            executable_path = "/home/ubuntu/pettonw_flask/api/chromedriver"
-            driver = webdriver.Chrome(executable_path=executable_path, options=options)
+            driver = webdriver.Chrome(driverPath, options=options)
             driver.set_window_size(1920, 1080)
             driver.get(testUrl)
             self.download_wait(savePath,driver)
