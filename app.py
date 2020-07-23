@@ -82,19 +82,18 @@ def onezero():
     try:
         # Headless Browser를 위한 옵션 설정
         options = webdriver.ChromeOptions()
-        options.add_argument('headless')
+        #options.add_argument('headless')
         options.add_argument('window-size=1920x1080')
         options.add_argument('disable-gpu')
-        options.add_argument(
-            'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36')
+        options.add_argument('user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36')
 
         # 크롬드라이버(chromedriver.exe)가 위치한 경로 구하기
         driverPath = '{}\crawling\chromedriver.exe'.format(os.path.dirname(os.path.realpath(__file__)))
 
         # 1.WebDriver객체 얻기
         # 드라이버 생성시 두번 째 인자로 위에서 설정한 Headless브라우저로 띄우기 위한 옵션 전달
-        driver = webdriver.Chrome(driverPath)
-        #driver = webdriver.Chrome(driverPath,options=options)
+        #driver = webdriver.Chrome(driverPath)
+        driver = webdriver.Chrome(driverPath,options=options)
         loot="https://search.naver.com/search.naver?where=post&sm=tab_jum&query="
         driver.get(loot)
 

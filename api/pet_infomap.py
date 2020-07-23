@@ -32,10 +32,9 @@ class PetInfomap(Resource):
             newFilePath = './api/data/pet_'+filename+'.xlsx'
 
             options = webdriver.ChromeOptions()
-            # options.add_argument('headless')
+            #options.add_argument('headless')
             options.add_argument("disable-gpu")
-            options.add_argument(
-                "user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36")
+            options.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36")
 
             options.add_experimental_option("prefs", {
                 "download.default_directory": r"C:\Document",
